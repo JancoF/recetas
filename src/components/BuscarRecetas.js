@@ -1,4 +1,3 @@
-// src/components/BuscarRecetas.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Card, Button, Container, Row, Col, Form, InputGroup } from 'react-bootstrap';
@@ -9,10 +8,10 @@ function BuscarRecetas() {
   const [esRecomendacion, setEsRecomendacion] = useState(false);
 
   const buscarRecetas = () => {
-    axios.get(`http://localhost:5268/buscar/${termino}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/buscar/${termino}`) // Ajustar la URL aquí
       .then(response => {
-        setResultados(response.data.resultados);
-        setEsRecomendacion(response.data.esRecomendacion);
+        setResultados(response.data.Resultados);
+        setEsRecomendacion(response.data.EsRecomendacion);
       })
       .catch(error => {
         console.error('Error searching recetas:', error);

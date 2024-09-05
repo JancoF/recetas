@@ -1,4 +1,3 @@
-// src/components/RecetasList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Container, Row, Col } from 'react-bootstrap';
@@ -7,7 +6,7 @@ function RecetasList() {
   const [recetas, setRecetas] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5268/recetas')
+    axios.get(`${process.env.REACT_APP_API_URL}/recetas`)
       .then(response => {
         setRecetas(response.data);
       })
